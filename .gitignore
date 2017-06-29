@@ -1,0 +1,7 @@
+project/checkpoint
+project/.ipynb_checkpoints/
+project/examples/*.jpg
+project/examples/*.png
+project/*.png
+project/*.p
+project/lenet*
