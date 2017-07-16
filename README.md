@@ -122,13 +122,13 @@ My final model consisted of the following layers:
 
 My final model results were:
 * training set accuracy of 0.997
-* validation set accuracy of o.978
+* validation set accuracy of 0.978
 * test set accuracy of 0.966
 
 I've started with the base LeNet architecture to train the model and initial results were:
 * validation test accuracy of 0.851 and test set accuracy of 0.862
 
-Here is a list of iterations that led to the final model. In general, in case of under-fitting I was trying to increase the number of parameters in the model by adding new conv and fully-connected layers and extending existing ones. In case of  over-fitting I was adding new max-pool and/or drop out layers. And I was keeping [NVidia ConvNet](https://devblogs.nvidia.com/parallelforall/deep-learning-self-driving-cars/) in mind as a successful model.
+Here is a list of iterations that led to the final model. In general, in case of under-fitting I was trying to increase the number of parameters in the model by adding new convolutional and fully-connected layers and extending existing ones. In case of  over-fitting I was adding new max-pool and/or drop out layers. And I was keeping [NVidia ConvNet](https://devblogs.nvidia.com/parallelforall/deep-learning-self-driving-cars/) in mind as a successful model.
 
 | Change Description         		| Validation Accuracy		| Testing Accuracy	|
 |:-------------------------------------:|:-----------------------------:|:---------------------:|
