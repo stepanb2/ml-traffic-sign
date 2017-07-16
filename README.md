@@ -78,7 +78,7 @@ Here is an example of a traffic sign image before and after grayscaling.
 
 ![alt text][image2]
 
-After I've reached validation accuracy of 0.93. I decided to add more data into training dataset by adding two random rotations of the image in range of -15 to 15 degrees and two random shifts of the each image in training dataset.
+After I've reached validation accuracy of 0.93, I decided to add more data into training dataset by adding two random rotations of the image in range of -15 to 15 degrees and two random shifts of the each image in training dataset.
 
 Here is an example of several original images and four augmented images per each one:
 
@@ -128,7 +128,7 @@ My final model results were:
 I've started with the base LeNet architecture to train the model and initial results were:
 * validation test accuracy of 0.851 and test set accuracy of 0.862
 
-Here is a list of iterations that led to the final model. In general, in case of under-fitting I was trying to increase the number of parameters in the model, by adding new layers and extending existing ones. In case of of over-fitting I was adding new max-pool and/or drop out layers. And as the end target I was keeping  [NVidia ConvNet](https://devblogs.nvidia.com/parallelforall/deep-learning-self-driving-cars/) in mind. And was adding more convolution  and fully connected layers.
+Here is a list of iterations that led to the final model. In general, in case of under-fitting I was trying to increase the number of parameters in the model by adding new conv and fully-connected layers and extending existing ones. In case of  over-fitting I was adding new max-pool and/or drop out layers. And I was keeping [NVidia ConvNet](https://devblogs.nvidia.com/parallelforall/deep-learning-self-driving-cars/) in mind as a successful model.
 
 | Change Description         		| Validation Accuracy		| Testing Accuracy	|
 |:-------------------------------------:|:-----------------------------:|:---------------------:|
@@ -158,7 +158,8 @@ Here are five German traffic signs that I found on the web:
 | ![alt text][image8] |Stop (14)|
 
 
-The first image might be difficult to classify because ...
+* The second image might be hard to classify because the form of the arrow is not exactly matching the training examples (see image below).
+* The third image might be hard to classify because pretty extended cropping that change the size of the bounding circle. 
 
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
@@ -173,7 +174,7 @@ Here are the results of the prediction:
 | Stop		| Stop      							|
 
 
-The model was able to correctly guess 3 of the 5 traffic signs, which gives an accuracy of 60%. This score is way lower than a test accuracy of 0.966 of the final model.
+The model was able to correctly guess 3 of the 5 traffic signs, which gives an accuracy of 60%. This score is significantly lower than a test accuracy of 0.966 of the final model.
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
@@ -181,7 +182,7 @@ The code for making predictions on my final model is located in the 11th cell of
 
 For the first image, the model is pretty sure that this is a No Entry sign (probability of almost 1.0), and that's correct.
 
-The top five soft max probabilities were
+The top five soft max probabilities were:
 
 
 | Probability         	|     Prediction	        					| Input Image: ![alt text][image5] |
@@ -193,9 +194,9 @@ The top five soft max probabilities were
 | 3.85442388e-35				    | Children crossing (28)      							||
 
 
-For the second image, the model has failed properly recognise the right turn ahead sign.
+For the second image, the model has failed to recognise the right turn ahead sign properly.
 
- The top five soft max probabilities were
+ The top five soft max probabilities were:
 
 | Probability         	|     Prediction	        					| Input Image: ![alt text][image7] |
 |:---------------------:|:---------------------------------------------:|:------:| 
@@ -205,12 +206,12 @@ For the second image, the model has failed properly recognise the right turn ahe
 | 0.09	      			| Speed limit (30km/h) (1)					 				||
 | 0.07				    | Priority road (12)      							||
 
-More detailed analysis of the sample images for the "Turn right ahead" shows, that used image is sligtly different (e.x. bolder arrow) from training images for the same sign class.
+More detailed analysis of the sample images for the "Turn right ahead" shows the input image is sligtly different (e.x. bolder arrow) from training images for the same sign class.
 ![alt text][imagerightturnfull]
 
-For the third image,  the model has failed properly recognise the "Speed limit (20km/h)" sign.
+For the third image,  the model has failed to recognise the "Speed limit (20km/h)" sign properly.
 
-The top five soft max probabilities were
+The top five soft max probabilities were:
 
 
 | Probability         	|     Prediction	        					| Input Image: ![alt text][image4] |
@@ -221,12 +222,13 @@ The top five soft max probabilities were
 | 0.03	      			| Dangerous curve to the right (20)					 				||
 | 0.01				    | Beware of ice/snow (30)      							||
 
-Here is an example for training images for "Speed limit (20km/h)" sign class. It looks like the input image is cropped too much comparing to training images. Augmenting data with randomly cropping can improve performance of the model
+Here is an example for training images for "Speed limit (20km/h)" sign class. It looks like the input image is cropped too much comparing to training images. Augmenting data by randomly cropping training image might improve performance of the model.
+
 ![alt text][image20full]
 
 For the fourth image, the model is pretty sure that this is a "No passing for vehicles over 3.5 metric tons" sign (probability of almost 1.0) and that's correct.
 
- The top five soft max probabilities were
+ The top five soft max probabilities were:
 
 | Probability         	|     Prediction	        					| Input Image: ![alt text][image6] |
 |:---------------------:|:---------------------------------------------:|:------:| 
